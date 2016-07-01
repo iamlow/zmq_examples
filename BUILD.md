@@ -36,7 +36,7 @@ To Build:
   * 프로젝트-속성-Local Dependencies-libsodium을 Not linked로 변경
   * 프로젝트-속성-ZMQ Options-Sodium-Enable Sodium을 Yes에서 No로 변경
   * 빌드 시 libzmq.import.props 파일에서 오류 발생 시 아래 내용 삭제 후 빌드
-  ``` text
+  ``` xml
     <Target Name="Linkage-libzmq-dynamic" AfterTargets="AfterBuild" Condition="'$(Linkage-libzmq)' == 'dynamic'">
     <Copy Condition="$(Configuration.IndexOf('Debug')) != -1"
           SourceFiles="$(ProjectDir)..\..\..\..\..\libzmq\bin\$(PlatformName)\Debug\$(PlatformToolset)\dynamic\libzmq.dll"
