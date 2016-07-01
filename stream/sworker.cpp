@@ -25,7 +25,8 @@ static bool s_send (zmq::socket_t & socket, const std::string & string)
 
 //  Sends string as 0MQ string, as multipart non-terminal
 static bool
-s_sendmore (zmq::socket_t & socket, const std::string & string) {
+s_sendmore (zmq::socket_t & socket, const std::string & string)
+{
 
     zmq::message_t message(string.size());
     memcpy (message.data(), string.data(), string.size());
@@ -55,27 +56,27 @@ int main (int argc, char *argv[])
 {
     zmq::context_t context(1);
 
-	zmq::socket_t zpull(context, ZMQ_PULL);
-	zpull.connect("tcp://localhost:5557");
+    zmq::socket_t zpull(context, ZMQ_PULL);
+    zpull.connect("tcp://localhost:5557");
 
     zmq::socket_t zpush(context, ZMQ_PUSH);
-	zpush.connect("tcp://localhost:5556");
+    zpush.connect("tcp://localhost:5556");
 
-	while (1) {
+    while (1) {
         /*  Get HTTP request; ID frame and then request */
         std::string id = s_recv(zpull);
         std::cout << __LINE__ << " ID: " << id << std::endl;
 
-		//  Wait for next request from client
-		std::string string = s_recv(zpull);
-		std::cout << "Received request: " << string << std::endl;
+        //  Wait for next request from client
+        std::string string = s_recv(zpull);
+        std::cout << "Received request: " << string << std::endl;
 
         if (2 == argc) {
             run(zpush, id, string, atoi(argv[1]));
         } else {
             run(zpush, id, string);
         }
-	}
+    }
 
     return 0;
 }

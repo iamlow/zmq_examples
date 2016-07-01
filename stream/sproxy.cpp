@@ -25,7 +25,8 @@ static bool s_send (zmq::socket_t & socket, const std::string & string)
 
 //  Sends string as 0MQ string, as multipart non-terminal
 static bool
-s_sendmore (zmq::socket_t & socket, const std::string & string) {
+s_sendmore (zmq::socket_t & socket, const std::string & string)
+{
 
     zmq::message_t message(string.size());
     memcpy (message.data(), string.data(), string.size());
@@ -40,13 +41,13 @@ int main (int argc, char *argv[])
 
     // backend
     zmq::socket_t be_push(context, ZMQ_PUSH);
-	be_push.bind("tcp://*:5557");
+    be_push.bind("tcp://*:5557");
 
     zmq::socket_t be_pull(context, ZMQ_PULL);
-	be_pull.bind("tcp://*:5556");
+    be_pull.bind("tcp://*:5556");
 
     // frontend
-	zmq::socket_t fe_stream(context, ZMQ_STREAM);
+    zmq::socket_t fe_stream(context, ZMQ_STREAM);
     fe_stream.bind("tcp://*:5558");
 
     zmq::pollitem_t items [] = {
@@ -54,7 +55,7 @@ int main (int argc, char *argv[])
         { (void *)fe_stream, 0, ZMQ_POLLIN, 0 }
     };
 
-	while (1) {
+    while (1) {
         zmq::poll(&items [0], 2, -1);
 
         if (items[0].revents & ZMQ_POLLIN) {   // be -> fe
@@ -62,9 +63,9 @@ int main (int argc, char *argv[])
             std::string id = s_recv(be_pull);
             std::cout << __LINE__ << " ID: " << id << std::endl;
 
-    		//  Wait for next request from client
-    		std::string string = s_recv(be_pull);
-    		std::cout << "BE->FE Received request: " << string << std::endl;
+            //  Wait for next request from client
+            std::string string = s_recv(be_pull);
+            std::cout << "BE->FE Received request: " << string << std::endl;
 
             s_sendmore(fe_stream, id);
             s_send(fe_stream, string);
@@ -75,12 +76,12 @@ int main (int argc, char *argv[])
             std::string id = s_recv(fe_stream);
             std::cout << __LINE__ << " ID: " << id << std::endl;
 
-    		//  Wait for next request from client
-    		std::string string = s_recv(fe_stream);
-    		std::cout << "FE->BE Received request: " << string << std::endl;
+            //  Wait for next request from client
+            std::string string = s_recv(fe_stream);
+            std::cout << "FE->BE Received request: " << string << std::endl;
 
             s_sendmore(be_push, id);
             s_send(be_push, string);
         }
-	}
+    }
 }

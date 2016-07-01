@@ -8,13 +8,18 @@
 ![ZMQ_STREAM PIPELINE](zmq_stream.png)
 
 ### 파일 설명
-* sserver.cpp: ZMQ_STREAM SERVER
-* sclient.cpp: ZMQ_STREAM CLIENT
-* sproxy.cpp: ZMQ_STREAM PROXY
- * STREAM->PUSH->PULL->STREAM
-* sworker.cpp: ZMQ_STREAM WORKER
-* bclient.cpp: BSD SOCKET CLIENT
- * BSD Client Socket
+* sserver.cpp:
+ZMQ_STREAM SERVER
+* sclient.cpp:
+ZMQ_STREAM CLIENT
+* sproxy.cpp:
+ZMQ_STREAM PROXY
+* STREAM->PUSH->PULL->STREAM
+* sworker.cpp:
+ZMQ_STREAM WORKER
+* bclient.cpp:
+BSD SOCKET CLIENT
+* BSD Client Socket
 
 ### How To Build
 * cmake 사용
