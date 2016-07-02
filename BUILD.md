@@ -36,6 +36,7 @@ To Build with CMake:
 
 1. `git clone https://github.com/zeromq/zeromq4-1.git` 
 2. `cd zeromq4-1`
+3. `git checkout v4.1.5`
 3. `mkdir build`
 4. `cd build`
 5. `cmake ..`
