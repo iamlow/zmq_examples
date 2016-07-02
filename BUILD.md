@@ -1,3 +1,27 @@
+## Building ZeroMQ
+
+### Windows
+
+Prerequisites:
+
+* Visual Studio 2015 Update 3
+
+To Build with CMake:
+
+1. `git clone git://github.com/zeromq/libzmq.git`
+2. `cd libzmq`
+3. `mkdir build`
+4. `cd build`
+5. `cmake ..`
+    or
+   `cmake -G "Visual Studio 14 2015 Win64" ..`
+6. `cmake --build . --config Release`
+    or
+   `cmake --build . --config Debug`
+7. 빌드된 파일 위치
+  * dll: libzmq\build\bin\Debug(or Release)
+  * lib: libzmq\build\lib\Debug(or Release)
+
 ## Building ZeroMQ v4.1.5
 
 ### Windows
@@ -25,17 +49,15 @@ To Build with CMake:
 
 1. zeromq-4.1.5\CMakeLists.txt 파일의 473 라인 주석처리
    `# set(rc-sources version.rc)`
-2. Go to the project directory of the local source repository.
-3. To perform an out-of-source build, run:
-4. `mkdir build`
-5. `cd build`
-6. `cmake -DZMQ_BUILD_TESTS=OFF ..`
+2. `mkdir build`
+3. `cd build`
+4. `cmake -DZMQ_BUILD_TESTS=OFF ..`
     or
    `cmake -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF ..`
-7. `cmake --build . --config Release`
+5. `cmake --build . --config Release`
     or
    `cmake --build . --config Debug`
-8. 빌드된 파일 위치
+6. 빌드된 파일 위치
   * dll: zeromq-4.1.5\build\bin\Debug(or Release)
   * lib: zeromq-4.1.5\build\lib\Debug(or Release)
 
