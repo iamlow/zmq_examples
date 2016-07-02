@@ -72,8 +72,8 @@ Prerequisites:
 To Build with CMake:
 
 1. `git clone git://github.com/zeromq/czmq.git`
-2. `git checkout v3.0.2`
-3. `cd czmq`
+2. `cd czmq`
+3. `git checkout v3.0.2`
 4. `mkdir build`
 5. `cd build`
 6. `cmake ../ -DCMAKE_CXX_FLAGS=-DZMQ_STATIC -DZEROMQ_INCLUDE_DIRS=libzmq\include -DZEROMQ_LIBRARIES=libzmq\build\lib\Debug\libzmq-static-v140-mt-sgd-4_2_0.lib`
