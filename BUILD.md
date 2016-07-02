@@ -78,7 +78,7 @@ To Build with CMake:
 5. `cd build`
 6. `cmake ../ -DCMAKE_CXX_FLAGS=-DZMQ_STATIC -DZEROMQ_INCLUDE_DIRS=libzmq\include -DZEROMQ_LIBRARIES=libzmq\build\lib\Debug\libzmq-static-v140-mt-sgd-4_2_0.lib`
     or
-   `cmake ../ -DZEROMQ_INCLUDE_DIRS=libzmq\include -DZEROMQ_LIBRARIES=libzmq\build\lib\Debug\libzmq-static-v140-mt-sgd-4_2_0.lib`
+   `cmake ../ -DZEROMQ_INCLUDE_DIRS=libzmq\include -DZEROMQ_LIBRARIES=libzmq\build\lib\Debug\libzmq-v140-mt-gd-4_2_0.lib`
 7. `cmake --build . --config Release`
     or
    `cmake --build . --config Debug`
