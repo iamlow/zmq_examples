@@ -39,9 +39,9 @@ To Build with CMake:
 3. `git checkout v4.1.5`
 3. `mkdir build`
 4. `cd build`
-5. `cmake ..`
+5. `cmake -DZMQ_BUILD_TESTS=OFF ../`
     or
-   `cmake -G "Visual Studio 14 2015 Win64" ..`
+   `cmake -DZMQ_BUILD_TESTS=OFF -G "Visual Studio 14 2015 Win64" ..`
 6. `cmake --build . --config Release`
     or
    `cmake --build . --config Debug`
