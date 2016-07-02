@@ -23,18 +23,21 @@ To Build with CMake:
 
 *  빌드 설정이 완벽하지 않아서 빌드 시 오류가 발생하여 CMakeLists.txt 파일 수정 및 옵션을 추가하여 빌드해야함
 
-1.  zeromq-4.1.5\CMakeLists.txt 파일의 473 라인 주석처리
-    `# set(rc-sources version.rc)`
-2.  Go to the project directory of the local source repository.
-3.  To perform an out-of-source build, run:
-4.  `mkdir build`
-5.  `cd build`
-6.  `cmake -DZMQ_BUILD_TESTS=OFF ..`
-     or
-    `cmake -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF ..`
-7.  `cmake --build . --config Release`
-     or
-    `cmake --build . --config Debug`
+1. zeromq-4.1.5\CMakeLists.txt 파일의 473 라인 주석처리
+   `# set(rc-sources version.rc)`
+2. Go to the project directory of the local source repository.
+3. To perform an out-of-source build, run:
+4. `mkdir build`
+5. `cd build`
+6. `cmake -DZMQ_BUILD_TESTS=OFF ..`
+    or
+   `cmake -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF ..`
+7. `cmake --build . --config Release`
+    or
+   `cmake --build . --config Debug`
+8. 빌드된 파일 위치
+  * dll: zeromq-4.1.5\build\bin\Debug(or Release)
+  * lib: zeromq-4.1.5\build\lib\Debug(or Release)
 
 ## Building CZMQ v3.0.2
 
