@@ -73,3 +73,5 @@ To Build with CMake:
 8. 빌드된 파일 위치
   * dll: czmq\build\bin\Debug(or Release)
   * lib: czmq\build\lib\Debug(or Release)
+  
+* Windows 환경에서 ZMQ STATIC LIBRARY경우 ZMQ_STATIC을 빌드 옵션에 정의해 주어야 한다.
