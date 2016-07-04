@@ -17,3 +17,5 @@ target_link_libraries(sclient zmq)
 
 add_executable(sserver sserver.cpp)
 target_link_libraries(sserver zmq)
+
+add_executable(bclient bclient.cpp)

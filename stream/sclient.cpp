@@ -37,13 +37,10 @@ s_sendmore (zmq::socket_t & socket, const std::string & string)
 int main (int argc, char *argv[])
 {
     zmq::context_t context(1);
-#if 1
+
     zmq::socket_t requester(context, ZMQ_STREAM);
     requester.connect("tcp://localhost:5558");
-#else
-    zmq::socket_t requester(context, ZMQ_REQ);
-    requester.connect("tcp://localhost:5559");
-#endif
+
     int rtimeo = 5 * 1000; /* sec */
     requester.setsockopt(ZMQ_RCVTIMEO, &rtimeo, sizeof rtimeo);
 
@@ -55,11 +52,9 @@ int main (int argc, char *argv[])
     std::cout << __LINE__ << " ID: " << id << " " << id_size << std::endl;
 
     for( int request = 0 ; request < 10 ; request++) {
-        std::cout << __LINE__ << std::endl;
         s_sendmore(requester, id);
         // s_send(requester, "Hello");
         s_send(requester, argv[1]);
-        std::cout << __LINE__ << std::endl;
         std::string string = s_recv (requester);
         std::string string2 = s_recv (requester);
 
@@ -67,4 +62,6 @@ int main (int argc, char *argv[])
                   << " [" << string << "]"
                   << " [" << string2 << "]" << std::endl;
     }
+
+    return 0;
 }

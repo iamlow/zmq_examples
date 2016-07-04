@@ -31,7 +31,8 @@ int main(int argc, char **argv)
     for (int i = 0; i < 10; i++) {
         char rcv_buf[256];
         write(client_sockfd, snd_msg.c_str(), snd_msg.size());
-        read(client_sockfd, rcv_buf, 255);
+        int size = read(client_sockfd, rcv_buf, 255);
+        rcv_buf[size] = '\0';
         printf("%d %s\n", i, rcv_buf);
     }
 
